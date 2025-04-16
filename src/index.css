@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --loki-green: #1a4a1c;
+  --loki-green-bright: #2d803f;
+  --loki-dark: #050505;
+  --loki-darker: #030303;
+}
+
+body {
+  background-color: var(--loki-dark);
+  color: white;
+}
+
+.cursor-spotlight {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(29, 74, 28, 0.08) 0%, rgba(0, 0, 0, 0) 80%);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: screen;
+}
+
+.nav-link {
+  @apply relative text-white hover:text-[var(--loki-green-bright)] transition-colors;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--loki-green-bright)] transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.loki-button {
+  @apply px-6 py-2 bg-[var(--loki-green)] text-white font-semibold rounded 
+         hover:bg-[var(--loki-green-bright)] transition-all duration-300 
+         shadow-[0_0_15px_rgba(26,74,28,0.3)] hover:shadow-[0_0_25px_rgba(45,128,63,0.4)];
+}
+
+.loki-input {
+  @apply bg-[var(--loki-darker)] border-2 border-[var(--loki-green)] rounded px-4 py-2
+         focus:outline-none focus:ring-2 focus:ring-[var(--loki-green-bright)] focus:ring-opacity-50
+         text-white placeholder-gray-500;
+}
+
+.chat-message {
+  @apply p-4 rounded-lg mb-4 animate-fadeIn;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.feature-card {
+  @apply bg-[var(--loki-darker)] bg-opacity-80 backdrop-blur-sm p-6 rounded-lg 
+         border border-[var(--loki-green)] hover:border-[var(--loki-green-bright)]
+         hover:bg-[var(--loki-darker)] transition-all duration-300
+         transform hover:-translate-y-1;
+}
+
+.testimonial-card {
+  @apply bg-[var(--loki-darker)] bg-opacity-60 p-6 rounded-lg
+         border border-[var(--loki-green)] hover:border-[var(--loki-green-bright)]
+         transition-all duration-300;
+}
+
+.social-button {
+  @apply flex items-center justify-center px-4 py-2 
+         bg-[var(--loki-darker)] border border-[var(--loki-green)] 
+         rounded-md hover:bg-[var(--loki-green-bright)] hover:bg-opacity-10 
+         transition-all duration-300;
+}
